@@ -11,27 +11,25 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
     }
 
-    stages {
-        stage('Terraform Init') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform init'
-                }
-            }
-        }
-        stage('Terraform Plan') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform plan -out=tfplan'
-                }
-            }
-        }
-        stage('Terraform Apply') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform apply -auto-approve tfplan'
-                }
-            }
+    stage('Terraform Init') {
+    steps {
+        sh 'terraform init'
+    }
+}
+
+stage('Terraform Plan') {
+    steps {
+        sh 'terraform plan -out=tfplan'
+    }
+}
+
+stage('Terraform Apply') {
+    steps {
+        sh 'terraform apply -auto-approve tfplan'
+    }
+}
+
+    
         }
     }
 }
