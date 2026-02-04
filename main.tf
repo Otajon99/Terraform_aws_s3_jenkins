@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "website" {
-  bucket = "my-unique-static-site-2026" # Change this!
+  bucket = "otajon-static-site-2026" # Change this!
 }
 
 resource "aws_s3_bucket_public_access_block" "example" {
